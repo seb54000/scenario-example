@@ -1,18 +1,19 @@
 {
     "icon": "fa-node",
-    "title": "Scenario with Editor UI",
-    "description": "Katacoda Scenario Example",
+    "title": "Kubernetes OIDC config",
+    "description": "Configure Kubernetes MInikube to work with OIDC",
     "authenticated": false,
     "details": {
         "steps": [
             {
-                "title": "Hello World",
+                "title": "Deploy Keycloak",
                 "text": "step1.md"
             }
         ]
     },
     "files": [
-        "app.js"
+        "kc-deploy.yaml",
+        "kc-service.yaml"
     ],
     "environment": {
         "hideintro": true,
@@ -22,6 +23,6 @@
         "uimessage1": "\u001b[32mYour Interactive Bash Terminal. A safe place to learn and execute commands.\u001b[m\r\n"
     },
     "backend": {
-        "image": "node"
+        "imageid": "kubernetes"
     }
 }

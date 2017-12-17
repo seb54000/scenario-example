@@ -1,6 +1,7 @@
-The following snippet can be copied into the editor:
+Deployment configuration for Keycloak instance :
 
-<pre class="file" data-filename="app.js" data-target="replace">apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+
+<pre class="file" data-filename="kc-deploy.yaml" data-target="replace">apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: keycloak-deployment
@@ -20,13 +21,27 @@ spec:
       - name: keycloak
         image: jboss/keycloak
         ports:
-        - containerPort: 80
+        - containerPort: 8080
 </pre>
 
-Code can be executed with the syntax `node app.js`{{execute}}
 
-The following will automatically be turned into a link and proxied to port 3000 -  http://[[CLIENT_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/
+Service configuration for Keycloak instance :
 
-In a multi-host environment, such as Docker, use HOST_SUBDOMAIN instead of CLIENT_SUBDOMAIN.
+<pre class="file" data-filename="kc-service.yaml" data-target="replace">kind: Service
+apiVersion: v1
+metadata:
+  name: keycloak-service
+spec:
+  selector:
+    app: keycloak
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+</pre>
 
-Live example at https://www.katacoda.com/courses/nodejs/playground
+
+Then deploy your app :
+
+`kubectl apply -f kc-deploy.yaml`{{execute}}
+`kubectl apply -f kc-service.yaml`{{execute}}
