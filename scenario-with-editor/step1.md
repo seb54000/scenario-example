@@ -1,13 +1,26 @@
 The following snippet can be copied into the editor:
 
-<pre class="file" data-filename="app.js" data-target="replace">var http = require('http');
-var requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
-}
-
-var server = http.createServer(requestListener);
-server.listen(3000, function() { console.log("Listening on port 3000")});
+<pre class="file" data-filename="app.js" data-target="replace">apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: keycloak-deployment
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: jboss/keycloak
+        ports:
+        - containerPort: 80
 </pre>
 
 Code can be executed with the syntax `node app.js`{{execute}}
