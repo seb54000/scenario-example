@@ -12,18 +12,16 @@
         ]
     },
     "assets": {
-      "client": [
+      "master": [
         {
           "file": "kc-deploy.yaml",
           "target": "~/"
-        }
-      ],
-      "host01": [
+        },
         {
           "file": "kc-service.yaml",
           "target": "~/"
         }
-      ]
+      ],
     },
     "files": [
         "kc-deploy.yaml",
