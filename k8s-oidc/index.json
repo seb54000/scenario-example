@@ -16,12 +16,14 @@
         {
           "file": "kc-deploy.yaml",
           "target": "~/"
-        },
+        }
+      ],
+      "master": [
         {
           "file": "kc-service.yaml",
           "target": "~/"
         }
-      ],
+      ]
     },
     "files": [
         "kc-deploy.yaml",
