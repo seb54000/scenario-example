@@ -11,14 +11,14 @@
             }
         ]
     },
-    "assets": {
+    "host01": {
       "master": [
         {
           "file": "kc-deploy.yaml",
           "target": "~/"
         }
       ],
-      "master": [
+      "host01": [
         {
           "file": "kc-service.yaml",
           "target": "~/"
