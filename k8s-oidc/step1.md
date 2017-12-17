@@ -49,7 +49,7 @@ Then deploy your app :
 
 `
 cat <<EOF | kubectl create -f -
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
   name: keycloak-deployment
@@ -82,6 +82,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8080
+  type: LoadBalancer
 ---
 EOF
 `{{execute}}
